@@ -167,7 +167,8 @@ class Auth {
     }
 
     return new Promise((resolve) => {
-      resolve(this._logoutURL);
+      let finalLogoutURL = this._logoutURL.replace(/\$\{(\w+)\}/g, (match, p1) => encodeURIComponent(this.fullInfo[p1] || ''));
+      resolve(finalLogoutURL);
     });
   }
 
