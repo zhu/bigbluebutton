@@ -5,6 +5,7 @@ import { AnnotationsStreamer } from '/imports/api/annotations';
 import addAnnotationQuery from '/imports/api/annotations/addAnnotation';
 import logger from '/imports/startup/client/logger';
 import { isEqual } from 'lodash';
+import { EventEmitter2 } from 'eventemitter2';
 
 const Annotations = new Mongo.Collection(null);
 const ANNOTATION_CONFIG = Meteor.settings.public.whiteboard.annotations;
@@ -96,6 +97,14 @@ AnnotationsStreamer.on('added', ({ annotations }) => {
     .filter(({ annotation }) => !discardedList.includes(annotation.id))
     .forEach(annotation => handleAddedAnnotation(annotation));
 });
+
+export const GiftEvent = new EventEmitter2();
+
+AnnotationsStreamer.on('gift', () => {
+  console.log('Someone sending a gift!');
+  GiftEvent.emit('gift');
+});
+
 
 function increaseBrightness(realHex, percent) {
   let hex = parseInt(realHex, 10).toString(16).padStart(6, 0);

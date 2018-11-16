@@ -19,6 +19,7 @@ export default withTracker(() => ({
     setThickness: WhiteboardToolbarService.setThickness,
     setColor: WhiteboardToolbarService.setColor,
     setTextShapeObject: WhiteboardToolbarService.setTextShapeObject,
+    sendGift: WhiteboardToolbarService.sendGift,
   },
   textShapeActiveId: WhiteboardToolbarService.getTextShapeActiveId(),
   multiUser: WhiteboardToolbarService.getMultiUserStatus(),

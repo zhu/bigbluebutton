@@ -22,6 +22,10 @@ const clearWhiteboard = (whiteboardId) => {
   makeCall('clearWhiteboard', whiteboardId);
 };
 
+const sendGift = () => {
+  makeCall('sendGift');
+};
+
 const changeWhiteboardMode = (multiUser) => {
   makeCall('changeWhiteboardAccess', multiUser);
 };
@@ -81,4 +85,5 @@ export default {
   getTextShapeActiveId,
   getMultiUserStatus,
   isPresenter,
+  sendGift,
 };

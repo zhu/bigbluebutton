@@ -59,6 +59,10 @@ const intlMessages = defineMessages({
     id: 'app.whiteboard.toolbar.fontSize',
     description: 'Whiteboard toolbar font size menu',
   },
+  toolbarGift: {
+    id: 'app.whiteboard.toolbar.Gift',
+    description: 'Whiteboard toolbar gift menu',
+  },
 });
 
 const runExceptInEdge = fn => (browser().name === 'edge' ? noop : fn);
@@ -96,6 +100,7 @@ class WhiteboardToolbar extends Component {
     this.handleUndo = this.handleUndo.bind(this);
     this.handleClearAll = this.handleClearAll.bind(this);
     this.handleSwitchWhiteboardMode = this.handleSwitchWhiteboardMode.bind(this);
+    this.handleGift = this.handleGift.bind(this);
     this.handleAnnotationChange = this.handleAnnotationChange.bind(this);
     this.handleThicknessChange = this.handleThicknessChange.bind(this);
     this.handleFontSizeChange = this.handleFontSizeChange.bind(this);
@@ -234,6 +239,11 @@ class WhiteboardToolbar extends Component {
 
   handleSwitchWhiteboardMode() {
     this.props.actions.changeWhiteboardMode(!this.props.multiUser);
+  }
+
+  handleGift() {
+    // send gift
+    this.props.actions.sendGift();
   }
 
   // changes a current selected annotation both in the state and in the session
@@ -545,6 +555,19 @@ class WhiteboardToolbar extends Component {
     );
   }
 
+  renderGiftItem() {
+    const { intl } = this.props;
+
+    return (
+      <ToolbarMenuItem
+        label={intl.formatMessage(intlMessages.toolbarGift)}
+        icon="gift"
+        onItemClick={this.handleGift}
+        className={cx(styles.toolbarButton, styles.notActive)}
+      />
+    );
+  }
+
   render() {
     const { annotationSelected } = this.state;
     const { isPresenter } = this.props;
@@ -562,6 +585,9 @@ class WhiteboardToolbar extends Component {
           {this.renderClearAllItem()}
           {isPresenter ?
           this.renderMultiUserItem()
+        : null }
+          {isPresenter ?
+          this.renderGiftItem()
         : null }
         </div>
       </div>
