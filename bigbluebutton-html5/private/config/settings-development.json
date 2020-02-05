@@ -5,14 +5,14 @@
       "mobileFont": 16,
       "desktopFont": 14,
       "audioChatNotification": false,
-      "autoJoin": true,
+      "autoJoin": false,
       "listenOnlyMode": true,
       "forceListenOnly": false,
       "skipCheck": false,
-      "clientTitle": "BigBlueButton",
-      "appName": "BigBlueButton HTML5 Client",
+      "clientTitle": "慧艺术教育",
+      "appName": "慧艺术教育在线教室",
       "bbbServerVersion": "2.0-rc",
-      "copyright": "©2018 BigBlueButton Inc.",
+      "copyright": "©2018 广州点慧",
       "html5ClientBuild": "HTML5_CLIENT_VERSION",
       "lockOnJoin": true,
       "basename": "/html5client",
@@ -22,7 +22,7 @@
           "chatAudioAlerts": false,
           "chatPushAlerts": false,
           "fontSize": "16px",
-          "fallbackLocale": "en"
+          "fallbackLocale": "zh_CN"
         },
         "audio": {
           "inputDeviceId": "undefined",
@@ -62,7 +62,7 @@
         "openStatus": {"accesskey": "S", "descId": "openStatus"}
       },
       "branding": {
-        "displayBrandingArea": false
+        "displayBrandingArea": true
       },
       "allowHTML5Moderator": true,
       "allowModeratorToUnmuteAudio": true,
@@ -72,7 +72,7 @@
     },
 
     "kurento": {
-      "wsUrl": "HOST",
+      "wsUrl": "wss://bbb.kaduoxq.com/bbb-webrtc-sfu",
       "chromeDefaultExtensionKey": "akgoaoikmbmhcopjgakkcepdgdgkjfbc",
       "chromeDefaultExtensionLink": "https://chrome.google.com/webstore/detail/bigbluebutton-screenshare/akgoaoikmbmhcopjgakkcepdgdgkjfbc",
       "chromeExtensionKey": "KEY",
@@ -143,7 +143,8 @@
           "moveCursor",
           "sendAnnotation",
           "removePresentation",
-          "setPresentation"
+          "setPresentation",
+					"sendGift"
         ]
       }
     },
@@ -371,7 +372,8 @@
       "timeout": 5000,
       "debug": true,
       "channels": {
-        "toAkkaApps": "to-akka-apps-redis-channel"
+        "toAkkaApps": "to-akka-apps-redis-channel",
+        "toHtml5": "to-html5-redis-channel"
       },
       "subscribeTo": [
         "to-html5-redis-channel",

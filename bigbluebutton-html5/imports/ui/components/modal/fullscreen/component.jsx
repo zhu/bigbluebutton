@@ -67,21 +67,21 @@ class ModalFullscreen extends Component {
           <h1 className={styles.title}>{title}</h1>
           <div className={styles.actions}>
             <Button
-              data-test='modalDismissButton'
+              data-test="modalDismissButton"
               className={styles.dismiss}
               label={dismiss.label}
               disabled={dismiss.disabled}
               onClick={this.handleAction.bind(this, 'dismiss')}
-              aria-describedby={'modalDismissDescription'}
+              aria-describedby="modalDismissDescription"
             />
             <Button
-              data-test='modalConfirmButton'
-              color={'primary'}
+              data-test="modalConfirmButton"
+              color="primary"
               className={styles.confirm}
               label={confirm.label}
               disabled={confirm.disabled}
               onClick={this.handleAction.bind(this, 'confirm')}
-              aria-describedby={'modalConfirmDescription'}
+              aria-describedby="modalConfirmDescription"
             />
           </div>
         </header>
@@ -90,7 +90,6 @@ class ModalFullscreen extends Component {
         </div>
         <div id="modalDismissDescription" hidden>{dismiss.description}</div>
         <div id="modalConfirmDescription" hidden>{confirm.description}</div>
-        <ToastContainer />
       </ModalBase>
     );
   }
